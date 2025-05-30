@@ -4,14 +4,30 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 
 export function Hero() {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-black via-blue-900/20 to-black" />
+        {/* Primary background image */}
+        <Image
+          src="/images/tech_image_2.jpg"
+          alt="Technology background"
+          fill
+          className="object-cover"
+          quality={80}
+          priority
+        />
+        
+        {/* Dark overlay for better text contrast */}
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Grid pattern overlay */}
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
+        
+        {/* Animated gradient overlay */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.2 }}
@@ -47,7 +63,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg text-neutral-400 max-w-2xl mx-auto"
         >
-          Webcraft Studios transforms visions into high-performance web applications with cutting-edge technology and pixel-perfect design.
+          NextCraft Studios transforms visions into high-performance web applications with cutting-edge technology and pixel-perfect design.
         </motion.p>
 
         <motion.div

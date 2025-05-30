@@ -39,7 +39,7 @@ export function Navbar() {
           className="text-xl font-semibold tracking-tighter text-white flex items-center gap-2"
         >
           <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-            Webcraft
+            NextCraft
           </span>
           <span className="hidden sm:inline text-neutral-300">Studios</span>
         </Link>
