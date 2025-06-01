@@ -89,7 +89,7 @@ export function Portfolio() {
             perSlideOffset: 10,
             perSlideRotate: 1.5,
             rotate: true,
-            depth: 100
+            // depth: 100
           }}
         >
           {projects.map((project, index) => (
