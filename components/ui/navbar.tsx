@@ -1,3 +1,4 @@
+// components/ui/navbar.tsx
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -12,7 +13,7 @@ const navItems = [
   { label: 'Services', href: '#services', isAnchor: true },
   { label: 'Portfolio', href: '#portfolio', isAnchor: true },
   { label: 'About', href: '#about', isAnchor: true },
-  { label: 'Pricing', href: '/pricing', isAnchor: false }, // Future page
+  { label: 'Pricing', href: '/pricing', isAnchor: false },
   { label: 'Contact', href: '#contact', isAnchor: true },
 ]
 
@@ -20,6 +21,7 @@ export function Navbar() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [currentHash, setCurrentHash] = useState('')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,11 +31,22 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    // This effect only runs on the client side
+    setCurrentHash(window.location.hash)
+    
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash)
+    }
+    
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
   // Check if current path matches any section
   const isActiveSection = (href: string) => {
     if (pathname === '/') {
-      const currentSection = window.location.hash
-      return currentSection === href
+      return currentHash === href
     }
     return pathname === href
   }
