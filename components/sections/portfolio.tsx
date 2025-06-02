@@ -48,7 +48,16 @@ const projects = [
 
 export function Portfolio() {
   return (
-    <section className="py-20 px-4 sm:px-6 max-w-7xl mx-auto overflow-hidden" id="portfolio">
+    <section
+      id="portfolio"
+      className="relative py-20 px-4 sm:px-6 max-w-7xl mx-auto overflow-hidden bg-black"
+    >
+      {/* Background layers */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.04]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/40 via-transparent to-transparent" />
+      </div>
+
       <div className="text-center mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -89,7 +98,6 @@ export function Portfolio() {
             perSlideOffset: 10,
             perSlideRotate: 1.5,
             rotate: true,
-            // depth: 100
           }}
         >
           {projects.map((project, index) => (
@@ -98,16 +106,14 @@ export function Portfolio() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="relative rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900/90 backdrop-blur-sm h-full w-full shadow-xl"
-                style={{
-                  transformStyle: 'preserve-3d',
-                }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
-                {/* Background layers */}
+                {/* Card background layers */}
                 <div className="absolute inset-0 bg-neutral-900/80" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent opacity-40" />
                 <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.03]" />
                 
-                {/* Content */}
+                {/* Card content */}
                 <div className="relative z-10 h-full flex flex-col p-6">
                   <div className="flex-1 flex flex-col">
                     <div className="flex justify-between items-start gap-4 mb-4">

@@ -8,8 +8,11 @@ import Image from 'next/image'
 
 export function About() {
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative overflow-hidden" id="about">
-      {/* Decorative elements */}
+    <section 
+      className="py-16 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative overflow-hidden bg-black backdrop-blur-md" 
+      id="about"
+    >
+      {/* Decorative elements - moved behind the main content */}
       <div className="absolute inset-0 overflow-hidden -z-10 pointer-events-none">
         <motion.div 
           initial={{ opacity: 0 }}
@@ -28,8 +31,8 @@ export function About() {
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.03]" />
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-12 xl:gap-24 items-center">
-        {/* Founder profile - Improved sizing */}
+      <div className="grid lg:grid-cols-2 gap-12 xl:gap-24 items-center relative">
+        {/* Founder profile */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -114,7 +117,7 @@ export function About() {
           </div>
         </motion.div>
 
-        {/* Studio story - Better spacing */}
+        {/* Studio story */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -204,7 +207,7 @@ export function About() {
         </motion.div>
       </div>
 
-      {/* Stats - Improved layout */}
+      {/* Stats */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

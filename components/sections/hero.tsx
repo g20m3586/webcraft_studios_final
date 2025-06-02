@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 export function Hero() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 overflow-hidden">
+    <section id="home" className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Primary background image */}

@@ -8,11 +8,12 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: '#home', isAnchor: true },
+  { label: 'Services', href: '#services', isAnchor: true },
+  { label: 'Portfolio', href: '#portfolio', isAnchor: true },
+  { label: 'About', href: '#about', isAnchor: true },
+  { label: 'Pricing', href: '/pricing', isAnchor: false }, // Future page
+  { label: 'Contact', href: '#contact', isAnchor: true },
 ]
 
 export function Navbar() {
@@ -28,6 +29,15 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Check if current path matches any section
+  const isActiveSection = (href: string) => {
+    if (pathname === '/') {
+      const currentSection = window.location.hash
+      return currentSection === href
+    }
+    return pathname === href
+  }
+
   return (
     <header
       className={cn(
@@ -38,8 +48,12 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-        {/* Logo */}
-        <Link href="/" className="text-xl font-semibold tracking-tighter text-white flex items-center gap-2">
+        {/* Logo - links to home section */}
+        <Link 
+          href="#home" 
+          scroll={false}
+          className="text-xl font-semibold tracking-tighter text-white flex items-center gap-2"
+        >
           <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
             NextCraft
           </span>
@@ -53,14 +67,39 @@ export function Navbar() {
               key={item.href}
               asChild
               variant="ghost"
-              className="text-neutral-300 hover:text-white hover:bg-white/10 data-[active=true]:bg-white/10 data-[active=true]:text-white"
-              data-active={pathname === item.href}
+              className={cn(
+                "text-neutral-300 hover:text-white hover:bg-white/10",
+                isActiveSection(item.href) && "bg-white/10 text-white"
+              )}
             >
-              <Link href={item.href}>{item.label}</Link>
+              <Link 
+                href={item.href}
+                scroll={!item.isAnchor} // Only scroll for non-anchor links
+                onClick={() => {
+                  if (item.isAnchor) {
+                    // Smooth scroll for anchor links
+                    const element = document.querySelector(item.href)
+                    if (element) {
+                      element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                      })
+                    }
+                  }
+                }}
+              >
+                {item.label}
+              </Link>
             </Button>
           ))}
-          <Button variant="outline" className="ml-2 bg-transparent border-blue-500 text-blue-500 hover:bg-blue-500/10 hover:text-blue-400">
-            Get Started
+          <Button 
+            variant="outline" 
+            className="ml-2 bg-transparent border-blue-500 text-blue-500 hover:bg-blue-500/10 hover:text-blue-400"
+            asChild
+          >
+            <Link href="#contact" scroll={false}>
+              Get Started
+            </Link>
           </Button>
         </nav>
 
@@ -85,14 +124,39 @@ export function Navbar() {
                 key={item.href}
                 asChild
                 variant="ghost"
-                className="w-full justify-start text-neutral-300 hover:bg-white/10 hover:text-white"
-                onClick={() => setMenuOpen(false)}
+                className={cn(
+                  "w-full justify-start text-neutral-300 hover:bg-white/10 hover:text-white",
+                  isActiveSection(item.href) && "bg-white/10 text-white"
+                )}
+                onClick={() => {
+                  setMenuOpen(false)
+                  if (item.isAnchor) {
+                    const element = document.querySelector(item.href)
+                    if (element) {
+                      element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                      })
+                    }
+                  }
+                }}
               >
-                <Link href={item.href}>{item.label}</Link>
+                <Link 
+                  href={item.href}
+                  scroll={!item.isAnchor}
+                >
+                  {item.label}
+                </Link>
               </Button>
             ))}
-            <Button variant="outline" className="w-full mt-2 bg-transparent border-blue-500 text-blue-500 hover:bg-blue-500/10 hover:text-blue-400">
-              Get Started
+            <Button 
+              variant="outline" 
+              className="w-full mt-2 bg-transparent border-blue-500 text-blue-500 hover:bg-blue-500/10 hover:text-blue-400"
+              asChild
+            >
+              <Link href="#contact" scroll={false}>
+                Get Started
+              </Link>
             </Button>
           </div>
         </div>

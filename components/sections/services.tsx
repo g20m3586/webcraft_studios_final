@@ -46,7 +46,7 @@ const services = [
 
 export function Services() {
   return (
-    <section className="py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+    <section id="services" className="py-20 px-4 sm:px-6 max-w-7xl mx-auto bg-black">
       <div className="text-center mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -77,7 +77,7 @@ export function Services() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             whileHover={{ y: -5 }}
-            className="group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm p-6 hover:bg-neutral-900/70 transition-all"
+            className="group relative overflow-hidden rounded-xl border border-neutral-800 bg-black/50 backdrop-blur-md p-6 hover:bg-black/70 transition-all"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             
