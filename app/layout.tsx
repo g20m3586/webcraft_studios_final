@@ -1,5 +1,5 @@
 // app/layout.tsx
-
+// import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/ui/navbar";
@@ -7,7 +7,9 @@ import { Hero } from "@/components/sections/hero";
 import { Services } from "@/components/sections/services";
 import { Portfolio } from "@/components/sections/portfolio";
 import { About } from "@/components/sections/about";
+import { Footer } from "@/components/sections/footer";
 import "./globals.css";
+import { Contact } from "@/components/sections/contact";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +35,8 @@ export default function RootLayout() {
         <Services />
         <Portfolio />
         <About />
+        <Contact />
+        <Footer />
       </body>
     </html>
   );
