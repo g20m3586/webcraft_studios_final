@@ -46,7 +46,7 @@ export function About() {
           <div className="relative z-10 overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/70 backdrop-blur-sm shadow-2xl">
             <div className="aspect-[3/4] relative">
               <Image
-                src="/founder.jpg"
+                src="/images/Portfolio Image.png"
                 alt="Founder of NextCraft Studios"
                 fill
                 className="object-cover"
@@ -57,7 +57,7 @@ export function About() {
             <div className="p-6 sm:p-8">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-white">Alex Rivera</h3>
+                  <h3 className="text-2xl font-bold text-white">Monty Mhango</h3>
                   <p className="text-blue-400">Founder & Lead Designer</p>
                 </div>
                 <div className="flex gap-2">
@@ -143,7 +143,7 @@ export function About() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent mb-6 leading-tight"
           >
-            Crafting Digital Excellence Since 2018
+            Crafting Digital Excellence Since 2024
           </motion.h2>
 
           <motion.p

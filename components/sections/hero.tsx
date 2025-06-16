@@ -13,7 +13,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Primary background image */}
         <Image
-          src="/images/tech_image_2.jpg"
+          src="/images/dark-tech-1.jpg"
           alt="Technology background"
           fill
           className="object-cover"
